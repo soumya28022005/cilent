@@ -46,7 +46,7 @@ const QuestionGenerator = () => {
           initial={{ x: "-100%" }}
           animate={{ x: "100%" }}
           exit={{ x: "100%" }}
-          transition={{ duration: 15, ease: "linear", repeat: Infinity, repeatType: "restart" }}
+          transition={{ duration: 10, ease: "linear", repeat: Infinity, repeatType: "restart" }}
           style={{
             fontSize: "20px",
             whiteSpace: "nowrap",

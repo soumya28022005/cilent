@@ -97,27 +97,27 @@ button:hover {
 
 /* ✅ Responsive Design */
 @media screen and (max-width: 768px) {
-  #root {
-    width: 95%;
-    padding: 20px;
+    #root {
+      width: 95%;
+      padding: 20px;
+    }
+  
+    h1 {
+      font-size: 1.4rem; /* Reduce heading size for mobile */
+      text-align: center;
+    }
+  
+    .input-container {
+      flex-direction: column; /* Stack input and button */
+      width: 100%;
+      gap: 12px;
+    }
+  
+    input {
+      width: 100%;
+    }
+  
+    button {
+      width: 100%;
+    }
   }
-
-  h1 {
-    font-size: 1.6rem; /* Adjust heading size for mobile */
-    text-align: center;
-  }
-
-  .input-container {
-    flex-direction: column; /* ✅ Button moves below input */
-    gap: 12px;
-    width: 100%;
-  }
-
-  input {
-    width: 100%;
-  }
-
-  button {
-    width: 100%;
-  }
-}

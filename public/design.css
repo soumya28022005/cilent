@@ -29,7 +29,7 @@ body {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(20px);
     border-radius: 20px;
-    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
     animation: fadeIn 0.8s ease-in-out;
 }
 
@@ -47,15 +47,20 @@ body {
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
-    body {
-      height: auto;
-      padding: 20px;
-      overflow: auto;
+    #root {
+      width: 95%; /* Make it more responsive */
+      max-width: 450px; /* Prevent extra wide scaling */
+      padding: 15px; /* Reduce padding */
     }
   
-    #root {
-      width: 100%;
-      padding: 20px;
+    h1, h2 {
+      font-size: 1.5rem; /* Make text smaller on mobile */
+    }
+  
+    input {
+      width: 100%; /* Make input field responsive */
+      max-width: 350px;
     }
   }
+  
 

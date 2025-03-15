@@ -47,18 +47,15 @@ body {
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
+    body {
+      height: auto;
+      padding: 20px;
+      overflow: auto;
+    }
+  
     #root {
-      width: 95%;
+      width: 100%;
       padding: 20px;
     }
-  
-    input {
-      width: 100%;
-    }
-  
-    button {
-      width: 100%;
-      margin-top: 10px;
-    }
   }
-  
+

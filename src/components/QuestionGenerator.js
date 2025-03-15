@@ -40,20 +40,24 @@ const QuestionGenerator = () => {
 
   return (
     <div style={{ textAlign: "center", margin: "20px auto", maxWidth: "600px", overflow: "hidden" }}>
-      {/* Faster Animation */}
-      <motion.h2
-        initial={{ x: "-100%" }}
-        animate={{ x: "100%" }}
-        exit={{ x: "100%" }}
-        transition={{ duration: 10, ease: "linear", repeat: Infinity, repeatType: "restart" }}
-        style={{
-          fontSize: isMobile ? "20px" : "30px",
-          whiteSpace: "nowrap",
-          position: "relative",
-        }}
-      >
-        AI-Powered Exam Generator
-      </motion.h2>
+      {/* Animated Header on Mobile, Static on Laptop */}
+      {isMobile ? (
+        <motion.h2
+          initial={{ x: "-100%" }}
+          animate={{ x: "100%" }}
+          exit={{ x: "100%" }}
+          transition={{ duration: 15, ease: "linear", repeat: Infinity, repeatType: "restart" }}
+          style={{
+            fontSize: "20px",
+            whiteSpace: "nowrap",
+            position: "relative",
+          }}
+        >
+          AI-Powered Exam Generator (S)
+        </motion.h2>
+      ) : (
+        <h2 style={{ fontSize: "30px" }}>AI-Powered Exam Generator (S)</h2>
+      )}
 
       <div
         style={{
@@ -92,8 +96,8 @@ const QuestionGenerator = () => {
           onClick={generateQuestion}
           disabled={loading}
           style={{
-            padding: isMobile ? "6px 12px" : "10px 20px",
-            fontSize: isMobile ? "14px" : "16px",
+            padding: isMobile ? "8px 16px" : "10px 20px",
+            fontSize: isMobile ? "16px" : "16px",
             borderRadius: "8px",
             border: "none",
             backgroundColor: loading ? "#007bff" : "#ff4081",

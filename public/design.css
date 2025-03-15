@@ -100,11 +100,11 @@ button:hover {
     animation: slideIn 1s ease-in-out;
   }
 
-/* ✅ Responsive Design */
+/* mobile  Design */
 @media screen and (max-width: 768px) {
   .input-container {
     flex-direction: column; /* Stack items vertically */
-    gap: 12px;
+    gap: 10px;
   }
 
   input {

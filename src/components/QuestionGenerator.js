@@ -6,7 +6,7 @@ const QuestionGenerator = () => {
     const [question, setQuestion] = useState(null);
 
     const generateQuestion = async () => {
-        const response = await axios.post("http://localhost:5000/api/questions/generate", { topic });
+        const response = await axios.post("https://exam-prep-rp4x.onrender.com/api/questions/generate", { topic });
         setQuestion(response.data);
     };
 

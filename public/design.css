@@ -18,19 +18,69 @@ body {
   align-items: center;
   height: 100vh;
   overflow: hidden;
+  padding: 20px;
 }
 
 /* Main Container */
 #root {
-    width: 90%;
-    max-width: 700px;
-    padding: 30px;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(20px);
-    border-radius: 20px;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
-    animation: fadeIn 0.8s ease-in-out;
+  width: 90%;
+  max-width: 700px;
+  padding: 30px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* AI Generator Title */
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  white-space: nowrap; /* Ensures AI Generator stays in one line */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Input and Button Container */
+.input-container {
+  display: flex;
+  flex-direction: row; /* Default: Input and button side by side */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 450px;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+/* Input Field */
+input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 0.5rem;
+  width: 100%;
+}
+
+/* Button */
+button {
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: #ff4081;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.01s;
+  font-size: 1rem;
+}
+
+button:hover {
+  background: #e6006b;
 }
 
 /* Smooth Fade-in Animation */
@@ -45,22 +95,29 @@ body {
   }
 }
 
-/* Responsive Design */
+/* ✅ Responsive Design */
 @media screen and (max-width: 768px) {
-    #root {
-      width: 95%; /* Make it more responsive */
-      max-width: 450px; /* Prevent extra wide scaling */
-      padding: 15px; /* Reduce padding */
-    }
-  
-    h1, h2 {
-      font-size: 1.5rem; /* Make text smaller on mobile */
-    }
-  
-    input {
-      width: 100%; /* Make input field responsive */
-      max-width: 350px;
-    }
+  #root {
+    width: 95%;
+    padding: 20px;
   }
-  
 
+  h1 {
+    font-size: 1.6rem; /* Adjust heading size for mobile */
+    text-align: center;
+  }
+
+  .input-container {
+    flex-direction: column; /* ✅ Button moves below input */
+    gap: 12px;
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
+}

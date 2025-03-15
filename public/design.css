@@ -85,39 +85,36 @@ button:hover {
 
 /* Smooth Fade-in Animation */
 @keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
+  .animate-fadeIn {
+    animation: fadeIn 1s ease-in-out;
   }
-}
+  
+  @keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .animate-slideIn {
+    animation: slideIn 1s ease-in-out;
+  }
 
 /* ✅ Responsive Design */
 @media screen and (max-width: 768px) {
-    #root {
-      width: 95%;
-      padding: 20px;
-    }
-  
-    h1 {
-      font-size: 1.4rem; /* Reduce heading size for mobile */
-      text-align: center;
-    }
-  
-    .input-container {
-      flex-direction: column; /* Stack input and button */
-      width: 100%;
-      gap: 12px;
-    }
-  
-    input {
-      width: 100%;
-    }
-  
-    button {
-      width: 100%;
-    }
+  .input-container {
+    flex-direction: column; /* Stack items vertically */
+    gap: 12px;
   }
+
+  input {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+  
+  
+  

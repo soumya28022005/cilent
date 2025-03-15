@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 const QuestionGenerator = () => {
   const [topic, setTopic] = useState("");
   const [question, setQuestion] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const generateQuestion = async () => {
     if (!topic) return;
@@ -28,48 +39,78 @@ const QuestionGenerator = () => {
   };
 
   return (
-    <div style={{ textAlign: "left", margin: "20px 50px" }}>
-      <h2>AI Question Generator</h2>
-      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-      <input
-  type="text"
-  placeholder="Enter topic"
-  value={topic}
-  onChange={(e) => setTopic(e.target.value)}
-  onKeyDown={handleKeyPress}
-  style={{
-    padding: "12px",
-    borderRadius: "8px",
-    border: "1px solid #ccc",
-    width: "280px",
-    fontSize: "16px",
-    outline: "none",
-    transition: "all 0.3s ease",
-    boxShadow: "inset 2px 2px 5px rgba(0, 0, 0, 0.2)",
-  }}
-/>
-<button
-  onClick={generateQuestion}
-  disabled={loading}
-  style={{
-    padding: "10px 20px",
-    fontSize: "16px",
-    borderRadius: "8px",
-    border: "none",
-    backgroundColor: loading ? "#007bff" : "#ff4081", // Blue when loading
-    color: "#fff",
-    cursor: loading ? "not-allowed" : "pointer",
-    transition: "all 0.3s ease",
-    boxShadow: "3px 3px 8px rgba(0, 0, 0, 0.2)",
-  }}
->
-  {loading ? <span className="loader"></span> : "Generate"}
-</button>
+    <div style={{ textAlign: "center", margin: "20px auto", maxWidth: "600px", overflow: "hidden" }}>
+      {/* Faster Animation */}
+      <motion.h2
+        initial={{ x: "-100%" }}
+        animate={{ x: "100%" }}
+        exit={{ x: "100%" }}
+        transition={{ duration: 10, ease: "linear", repeat: Infinity, repeatType: "restart" }}
+        style={{
+          fontSize: isMobile ? "20px" : "30px",
+          whiteSpace: "nowrap",
+          position: "relative",
+        }}
+      >
+        AI-Powered Exam Generator
+      </motion.h2>
 
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: isMobile ? "column" : "row",
+          gap: "10px",
+          width: "100%",
+          marginTop: "20px",
+        }}
+      >
+        {/* Input Field */}
+        <motion.input
+          type="text"
+          placeholder="Enter topic"
+          value={topic}
+          onChange={(e) => setTopic(e.target.value)}
+          onKeyDown={handleKeyPress}
+          style={{
+            padding: "14px",
+            borderRadius: "8px",
+            border: "1px solid #ccc",
+            width: isMobile ? "100%" : "300px",
+            fontSize: "16px",
+            outline: "none",
+            transition: "box-shadow 0.3s ease",
+            boxShadow: "inset 2px 2px 5px rgba(0, 0, 0, 0.2)",
+            textAlign: "left",
+          }}
+          whileFocus={{ boxShadow: "0px 0px 10px rgba(0, 0, 255, 0.5)" }}
+        />
+
+        {/* Generate Button */}
+        <motion.button
+          onClick={generateQuestion}
+          disabled={loading}
+          style={{
+            padding: isMobile ? "6px 12px" : "10px 20px",
+            fontSize: isMobile ? "14px" : "16px",
+            borderRadius: "8px",
+            border: "none",
+            backgroundColor: loading ? "#007bff" : "#ff4081",
+            color: "#fff",
+            cursor: loading ? "not-allowed" : "pointer",
+            transition: "background-color 0.3s ease, transform 0.2s ease",
+            boxShadow: "3px 3px 8px rgba(0, 0, 0, 0.2)",
+          }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {loading ? <span className="loader"></span> : "Generate"}
+        </motion.button>
       </div>
 
       {question && !loading && (
-        <div style={{ marginTop: "15px" }}>
+        <div style={{ marginTop: "15px", textAlign: "left" }}>
           <h3>{question.question}</h3>
           {question.options.map((opt, index) => (
             <p key={index} style={{ margin: "5px 0" }}>
@@ -79,6 +120,7 @@ const QuestionGenerator = () => {
         </div>
       )}
 
+      {/* CSS Animations */}
       <style>
         {`
           .loader {
@@ -90,17 +132,18 @@ const QuestionGenerator = () => {
             display: inline-block;
             animation: spin 0.8s linear infinite;
           }
-            button:hover {
+          
+          button:hover {
             background-color: #ff6384;
             transform: scale(1.05);
             box-shadow: 0px 5px 15px rgba(255, 99, 132, 0.5);
           }
+
           @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
           }
         `}
-        
       </style>
     </div>
   );

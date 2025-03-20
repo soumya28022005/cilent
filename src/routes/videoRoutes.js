@@ -4,7 +4,8 @@ const axios = require("axios");
 
 router.get("/solution", async (req, res) => {
   try {
-    const {topic} = req.query;
+    //const {topic} = req.query;
+    const {topic} = "newtonian physics"
     const API_KEY = "AIzaSyBhf50EEELtPcaDPjSsPLuHiUB3SVOURyw";
     const searchQuery = `${topic} explanation`;
 

@@ -5,7 +5,7 @@ const axios = require("axios");
 router.get("/solution", async (req, res) => {
   try {
     const {topic} = req.query;
-    const API_KEY = "your_youtube_api_key";
+    const API_KEY = "AIzaSyBhf50EEELtPcaDPjSsPLuHiUB3SVOURyw";
     const searchQuery = `${topic} explanation`;
 
     const response = await axios.get(
